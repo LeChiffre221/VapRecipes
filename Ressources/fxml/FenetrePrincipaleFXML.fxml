@@ -9,7 +9,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<BorderPane fx:id="globalBorderPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="vaprecipes.view.FenetrePrincipaleFXMLController">
+<BorderPane fx:id="globalBorderPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" stylesheets="@../css/DarkTheme.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="vaprecipes.view.FenetrePrincipaleFXMLController">
    <top>
       <MenuBar BorderPane.alignment="CENTER">
         <menus>
@@ -47,7 +47,7 @@
                               <Insets bottom="10.0" top="10.0" />
                            </BorderPane.margin>
                            <font>
-                              <Font name="System Bold" size="24.0" />
+                              <Font name="Segoe UI Light" size="30.0" />
                            </font>
                         </Label>
                      </top>
@@ -76,7 +76,7 @@
                                     <ListView fx:id="lvRecette" prefHeight="200.0" prefWidth="200.0" />
                                     <SplitPane fx:id="detailRecette" dividerPositions="0.40089086859688194, 0.7060133630289532" prefHeight="218.0" prefWidth="898.0">
                                        <items>
-                                          <BorderPane prefHeight="214.0" prefWidth="362.0">
+                                          <BorderPane prefHeight="214.0" prefWidth="362.0" stylesheets="@../css/DarkTheme_1.css">
                                              <bottom>
                                                 <FlowPane alignment="CENTER" prefHeight="35.0" prefWidth="364.0" BorderPane.alignment="CENTER">
                                                    <children>
@@ -154,7 +154,7 @@
                                           </BorderPane>
                                           <VBox prefHeight="200.0" prefWidth="100.0">
                                              <children>
-                                                <Label text="Détail des aromes : ">
+                                                <Label stylesheets="@../css/DarkTheme_1.css" text="Détail des aromes : ">
                                                    <VBox.margin>
                                                       <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                                                    </VBox.margin>
@@ -164,7 +164,7 @@
                                           </VBox>
                                           <VBox prefHeight="200.0" prefWidth="100.0">
                                              <children>
-                                                <Label text="Détail des additifs : ">
+                                                <Label stylesheets="@../css/DarkTheme_1.css" text="Détail des additifs : ">
                                                    <VBox.margin>
                                                       <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                                                    </VBox.margin>
@@ -187,7 +187,7 @@
                      <top>
                         <Label fx:id="gestionAromeLabel" text="Gestion des aromes" BorderPane.alignment="CENTER">
                            <font>
-                              <Font name="System Bold" size="24.0" />
+                              <Font name="Segoe UI Light" size="30.0" />
                            </font>
                            <BorderPane.margin>
                               <Insets bottom="10.0" top="10.0" />
@@ -223,12 +223,12 @@
                                     </Button>
                                  </children>
                               </VBox>
-                              <BorderPane fx:id="detailArome" prefHeight="200.0" prefWidth="200.0">
+                              <BorderPane fx:id="detailArome" prefHeight="200.0" prefWidth="200.0" stylesheets="@../css/DarkTheme_1.css">
                                  <center>
                                     <GridPane prefHeight="285.0" prefWidth="667.0" BorderPane.alignment="CENTER">
                                       <columnConstraints>
-                                        <ColumnConstraints halignment="RIGHT" hgrow="NEVER" maxWidth="129.0" minWidth="10.0" prefWidth="115.0" />
-                                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="403.0" minWidth="10.0" prefWidth="377.0" />
+                                        <ColumnConstraints halignment="RIGHT" hgrow="NEVER" maxWidth="139.0" minWidth="10.0" prefWidth="124.0" />
+                                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="403.0" minWidth="10.0" prefWidth="369.0" />
                                           <ColumnConstraints hgrow="SOMETIMES" maxWidth="276.0" minWidth="10.0" prefWidth="175.0" />
                                       </columnConstraints>
                                       <rowConstraints>
@@ -264,7 +264,7 @@
                                     </GridPane>
                                  </center>
                                  <top>
-                                    <Label text="Détail de l'arome" BorderPane.alignment="CENTER">
+                                    <Label text="Détail de l'arome" underline="true" BorderPane.alignment="CENTER">
                                        <BorderPane.margin>
                                           <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                                        </BorderPane.margin>
@@ -316,7 +316,7 @@
                                     </Button>
                                  </children>
                               </VBox>
-                              <BorderPane fx:id="detailAdditif" prefHeight="200.0" prefWidth="200.0">
+                              <BorderPane fx:id="detailAdditif" prefHeight="200.0" prefWidth="200.0" stylesheets="@../css/DarkTheme_1.css">
                                  <bottom>
                                     <ImageView fx:id="poubelleImageAdditif" fitHeight="83.0" fitWidth="85.0" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER_RIGHT">
                                        <BorderPane.margin>
@@ -358,7 +358,7 @@
                                     </GridPane>
                                  </center>
                                  <top>
-                                    <Label text="Détail de l'additif" BorderPane.alignment="CENTER">
+                                    <Label text="Détail de l'additif" underline="true" BorderPane.alignment="CENTER">
                                        <BorderPane.margin>
                                           <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                                        </BorderPane.margin>
@@ -371,7 +371,7 @@
                      <top>
                         <Label fx:id="gestionAromeLabel1" text="Gestion des additifs" BorderPane.alignment="CENTER">
                            <font>
-                              <Font name="System Bold" size="24.0" />
+                              <Font name="Segoe UI Light" size="30.0" />
                            </font>
                            <BorderPane.margin>
                               <Insets bottom="10.0" top="10.0" />

@@ -10,7 +10,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<BorderPane fx:id="globalBorderPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane fx:id="globalBorderPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" stylesheets="@../css/DarkTheme.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
    <top>
       <BorderPane prefHeight="144.0" prefWidth="900.0" BorderPane.alignment="CENTER">
          <top>
@@ -19,12 +19,12 @@
                   <Insets bottom="10.0" top="5.0" />
                </BorderPane.margin>
                <font>
-                  <Font name="System Bold" size="18.0" />
+                  <Font name="Segoe UI Light" size="18.0" />
                </font>
             </Label>
          </top>
          <center>
-            <GridPane prefHeight="143.0" prefWidth="900.0" BorderPane.alignment="CENTER">
+            <GridPane prefHeight="143.0" prefWidth="900.0" stylesheets="@../css/DarkTheme_1.css" BorderPane.alignment="CENTER">
               <columnConstraints>
                   <ColumnConstraints halignment="RIGHT" hgrow="SOMETIMES" maxWidth="294.0" minWidth="10.0" />
                 <ColumnConstraints hgrow="SOMETIMES" maxWidth="366.0" minWidth="10.0" prefWidth="238.0" />
@@ -81,11 +81,11 @@
                      <children>
                         <FlowPane alignment="CENTER" prefHeight="200.0" prefWidth="200.0">
                            <children>
-                              <Label text="PG : " />
+                              <Label prefHeight="6.0" prefWidth="50.0" text="PG : " />
                               <Label fx:id="proportionPG" />
-                              <Label text="\%" />
-                              <Slider fx:id="proportionBaseSlider" blockIncrement="1.0" majorTickUnit="10.0" minorTickCount="10" prefHeight="16.0" prefWidth="333.0" showTickMarks="true" snapToTicks="true" value="50.0" />
-                              <Label text="VG : " />
+                              <Label prefHeight="19.0" prefWidth="34.0" text="\%" />
+                              <Slider fx:id="proportionBaseSlider" blockIncrement="1.0" majorTickUnit="10.0" minorTickCount="10" prefHeight="16.0" prefWidth="205.0" showTickMarks="true" snapToTicks="true" value="50.0" />
+                              <Label prefHeight="19.0" prefWidth="54.0" text="VG : " />
                               <Label fx:id="proportionVG" />
                               <Label text="\%" />
                            </children>
@@ -124,7 +124,7 @@
          <top>
             <Label text="Ajouter les aromes et les additifs" BorderPane.alignment="CENTER">
                <font>
-                  <Font name="System Bold" size="15.0" />
+                  <Font name="Segoe UI Light" size="15.0" />
                </font>
                <BorderPane.margin>
                   <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
@@ -134,7 +134,7 @@
          <left>
             <VBox prefHeight="385.0" prefWidth="190.0" BorderPane.alignment="CENTER">
                <children>
-                  <Label text="Aromes disponibles :">
+                  <Label stylesheets="@../css/DarkTheme_1.css" text="Aromes disponibles :">
                      <VBox.margin>
                         <Insets left="5.0" right="5.0" top="5.0" />
                      </VBox.margin>
@@ -151,7 +151,7 @@
          <right>
             <VBox prefHeight="385.0" prefWidth="190.0" BorderPane.alignment="CENTER">
                <children>
-                  <Label text="Additifs disponibles :">
+                  <Label stylesheets="@../css/DarkTheme_1.css" text="Additifs disponibles :">
                      <VBox.margin>
                         <Insets left="5.0" right="5.0" top="5.0" />
                      </VBox.margin></Label>
@@ -191,7 +191,7 @@
                   </SplitPane>
                   <FlowPane alignment="CENTER" prefHeight="200.0" prefWidth="200.0">
                      <children>
-                        <Label text="Composition en cours  :  Arome  ">
+                        <Label stylesheets="@../css/DarkTheme_1.css" text="Composition en cours  :  Arome  ">
                            <font>
                               <Font name="System Bold" size="14.0" />
                            </font>
@@ -201,7 +201,7 @@
                               <Font name="System Bold" size="14.0" />
                            </font>
                         </Label>
-                        <Label text="\% / Base ">
+                        <Label stylesheets="@../css/DarkTheme_1.css" text="\% / Base ">
                            <font>
                               <Font name="System Bold" size="14.0" />
                            </font>
@@ -211,7 +211,7 @@
                               <Font name="System Bold" size="14.0" />
                            </font>
                         </Label>
-                        <Label text="\% / Additif ">
+                        <Label stylesheets="@../css/DarkTheme_1.css" text="\% / Additif ">
                            <font>
                               <Font name="System Bold" size="14.0" />
                            </font>
@@ -221,7 +221,7 @@
                               <Font name="System Bold" size="14.0" />
                            </font>
                         </Label>
-                        <Label text="\%">
+                        <Label stylesheets="@../css/DarkTheme_1.css" text="\%">
                            <font>
                               <Font name="System Bold" size="14.0" />
                            </font>

@@ -1,0 +1,11 @@
+
+.background{
+    -fx-background-color: white;
+    
+}
+.label {
+    -fx-padding: 0em 0em 0em 0em;
+    -fx-text-fill: #212121;
+    -fx-font-family: "Segoe UI", Helvetica, Arial, sans-serif;
+    -fx-font-size: 11pt;
+}

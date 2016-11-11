@@ -2,13 +2,6 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group>
-            <file>file:/home/lechiffre/Documents/Projet_Perso/VapRecipes/src/vaprecipes/view/FenetrePrincipaleFXMLController.java</file>
-            <file>file:/home/lechiffre/Documents/Projet_Perso/VapRecipes/Ressources/fxml/AddRecetteFXML.fxml</file>
-            <file>file:/home/lechiffre/Documents/Projet_Perso/VapRecipes/src/vaprecipes/viewModel/CatalogueAromeVM.java</file>
-            <file>file:/home/lechiffre/Documents/Projet_Perso/VapRecipes/src/vaprecipes/view/AddRecetteFXMLController.java</file>
-            <file>file:/home/lechiffre/Documents/Projet_Perso/VapRecipes/src/vaprecipes/viewModel/RecetteVM.java</file>
-            <file>file:/home/lechiffre/Documents/Projet_Perso/VapRecipes/src/vaprecipes/model/Recette.java</file>
-        </group>
+        <group/>
     </open-files>
 </project-private>
