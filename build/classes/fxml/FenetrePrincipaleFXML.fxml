@@ -1,0 +1,387 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane fx:id="globalBorderPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="vaprecipes.view.FenetrePrincipaleFXMLController">
+   <top>
+      <MenuBar BorderPane.alignment="CENTER">
+        <menus>
+          <Menu mnemonicParsing="false" text="Fichier">
+            
+            <items>
+              <MenuItem mnemonicParsing="false" onAction="#onClickSave" text="Sauvegarder" />
+            </items>
+            <items>
+              <MenuItem mnemonicParsing="false" onAction="#onClickExit" text="Quitter" />
+            </items>
+          </Menu>
+          <Menu mnemonicParsing="false" text="Edit">
+            <items>
+              <MenuItem mnemonicParsing="false" text="Delete" />
+            </items>
+          </Menu>
+          <Menu mnemonicParsing="false" text="Help">
+            <items>
+              <MenuItem mnemonicParsing="false" text="About" />
+            </items>
+          </Menu>
+        </menus>
+      </MenuBar>
+   </top>
+   <center>
+      <TabPane prefHeight="200.0" prefWidth="200.0" tabClosingPolicy="UNAVAILABLE" BorderPane.alignment="CENTER">
+        <tabs>
+          <Tab text="Gestion des recettes">
+               <content>
+                  <BorderPane prefHeight="200.0" prefWidth="200.0">
+                     <top>
+                        <Label text="Gestion des recettes" BorderPane.alignment="CENTER">
+                           <BorderPane.margin>
+                              <Insets bottom="10.0" top="10.0" />
+                           </BorderPane.margin>
+                           <font>
+                              <Font name="System Bold" size="24.0" />
+                           </font>
+                        </Label>
+                     </top>
+                     <center>
+                        <BorderPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+                           <top>
+                              <FlowPane alignment="CENTER_RIGHT" prefHeight="42.0" prefWidth="900.0">
+                                 <children>
+                                    <TextField fx:id="searchRecetteTF" prefHeight="25.0" prefWidth="182.0" promptText="Rechercher une recette.." />
+                                    <Button mnemonicParsing="false" onAction="#onClickAddRecette" text="+">
+                                       <FlowPane.margin>
+                                          <Insets bottom="5.0" left="20.0" right="20.0" top="5.0" />
+                                       </FlowPane.margin>
+                                    </Button>
+                                    <ImageView fx:id="poubelleImageRecette" fitHeight="45.0" fitWidth="44.0" pickOnBounds="true" preserveRatio="true">
+                                       <FlowPane.margin>
+                                          <Insets bottom="5.0" left="5.0" right="10.0" top="5.0" />
+                                       </FlowPane.margin>
+                                    </ImageView>
+                                 </children>
+                              </FlowPane>
+                           </top>
+                           <center>
+                              <SplitPane dividerPositions="0.5208333333333334" orientation="VERTICAL" prefHeight="200.0" prefWidth="160.0" BorderPane.alignment="CENTER">
+                                 <items>
+                                    <ListView fx:id="lvRecette" prefHeight="200.0" prefWidth="200.0" />
+                                    <SplitPane fx:id="detailRecette" dividerPositions="0.40089086859688194, 0.7060133630289532" prefHeight="218.0" prefWidth="898.0">
+                                       <items>
+                                          <BorderPane prefHeight="214.0" prefWidth="362.0">
+                                             <bottom>
+                                                <FlowPane alignment="CENTER" prefHeight="35.0" prefWidth="364.0" BorderPane.alignment="CENTER">
+                                                   <children>
+                                                      <Button mnemonicParsing="false" text="Incuber ">
+                                                         <FlowPane.margin>
+                                                            <Insets right="50.0" />
+                                                         </FlowPane.margin>
+                                                      </Button>
+                                                      <Button mnemonicParsing="false" text="Modifier">
+                                                         <FlowPane.margin>
+                                                            <Insets />
+                                                         </FlowPane.margin>
+                                                      </Button>
+                                                   </children>
+                                                </FlowPane>
+                                             </bottom>
+                                             <center>
+                                                <GridPane BorderPane.alignment="CENTER">
+                                                  <columnConstraints>
+                                                    <ColumnConstraints halignment="RIGHT" maxWidth="245.0" minWidth="10.0" />
+                                                    <ColumnConstraints hgrow="SOMETIMES" maxWidth="258.0" minWidth="10.0" prefWidth="119.0" />
+                                                  </columnConstraints>
+                                                  <rowConstraints>
+                                                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                  </rowConstraints>
+                                                   <children>
+                                                      <Label text="Nom : " />
+                                                      <Label text="Quantité : " GridPane.rowIndex="1" />
+                                                      <Label text="Proportion PG/VG : " GridPane.rowIndex="2">
+                                                         <GridPane.margin>
+                                                            <Insets left="10.0" />
+                                                         </GridPane.margin>
+                                                      </Label>
+                                                      <Label text="Taux de nicotine : " GridPane.rowIndex="3" />
+                                                      <FlowPane alignment="CENTER_LEFT" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.valignment="CENTER">
+                                                         <children>
+                                                            <Label fx:id="nomRecette" />
+                                                         </children>
+                                                      </FlowPane>
+                                                      <FlowPane alignment="CENTER_LEFT" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+                                                         <children>
+                                                            <Label fx:id="qteTotaleRecette" />
+                                                            <Label text=" mL" />
+                                                         </children>
+                                                      </FlowPane>
+                                                      <FlowPane alignment="CENTER_LEFT" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.rowIndex="2" GridPane.valignment="CENTER">
+                                                         <children>
+                                                            <Label fx:id="proportionPG" />
+                                                            <Label text="/" />
+                                                            <Label fx:id="proportionVG" />
+                                                         </children>
+                                                      </FlowPane>
+                                                      <FlowPane alignment="CENTER_LEFT" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.rowIndex="3" GridPane.valignment="CENTER">
+                                                         <children>
+                                                            <Label fx:id="tauxNicotine" />
+                                                            <Label text=" mg/L" />
+                                                         </children>
+                                                      </FlowPane>
+                                                   </children>
+                                                </GridPane>
+                                             </center>
+                                             <top>
+                                                <Label text="Detail de la recette" textOverrun="CLIP" underline="true" BorderPane.alignment="CENTER">
+                                                   <BorderPane.margin>
+                                                      <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                                                   </BorderPane.margin>
+                                                   <font>
+                                                      <Font size="18.0" />
+                                                   </font>
+                                                </Label>
+                                             </top>
+                                          </BorderPane>
+                                          <VBox prefHeight="200.0" prefWidth="100.0">
+                                             <children>
+                                                <Label text="Détail des aromes : ">
+                                                   <VBox.margin>
+                                                      <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                                   </VBox.margin>
+                                                </Label>
+                                                <ListView fx:id="lvAromeRecette" prefWidth="200.0" />
+                                             </children>
+                                          </VBox>
+                                          <VBox prefHeight="200.0" prefWidth="100.0">
+                                             <children>
+                                                <Label text="Détail des additifs : ">
+                                                   <VBox.margin>
+                                                      <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                                   </VBox.margin>
+                                                </Label>
+                                                <ListView fx:id="lvAdditifRecette" prefWidth="200.0" />
+                                             </children>
+                                          </VBox>
+                                       </items>
+                                    </SplitPane>
+                                 </items>
+                              </SplitPane>
+                           </center>
+                        </BorderPane>
+                     </center>
+                  </BorderPane>
+               </content></Tab>
+          <Tab text="Gestion des Aromes">
+               <content>
+                  <BorderPane prefHeight="200.0" prefWidth="200.0">
+                     <top>
+                        <Label fx:id="gestionAromeLabel" text="Gestion des aromes" BorderPane.alignment="CENTER">
+                           <font>
+                              <Font name="System Bold" size="24.0" />
+                           </font>
+                           <BorderPane.margin>
+                              <Insets bottom="10.0" top="10.0" />
+                           </BorderPane.margin>
+                        </Label>
+                     </top>
+                     <center>
+                        <SplitPane dividerPositions="0.25278396436525613" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+                           <items>
+                              <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
+                                 <children>
+                                    <Label text="Liste des aromes">
+                                       <font>
+                                          <Font name="System Bold" size="13.0" />
+                                       </font>
+                                       <VBox.margin>
+                                          <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                       </VBox.margin>
+                                    </Label>
+                                    <TextField fx:id="searchAromeTF" promptText="Rechercher un arôme..">
+                                       <VBox.margin>
+                                          <Insets bottom="5.0" left="5.0" right="5.0" />
+                                       </VBox.margin>
+                                    </TextField>
+                                    <ListView fx:id="lvArome" prefHeight="441.0" prefWidth="223.0">
+                                       <VBox.margin>
+                                          <Insets />
+                                       </VBox.margin></ListView>
+                                    <Button mnemonicParsing="false" onAction="#onClickAddArome" text="Ajouter un arome">
+                                       <VBox.margin>
+                                          <Insets bottom="7.0" left="7.0" right="7.0" top="7.0" />
+                                       </VBox.margin>
+                                    </Button>
+                                 </children>
+                              </VBox>
+                              <BorderPane fx:id="detailArome" prefHeight="200.0" prefWidth="200.0">
+                                 <center>
+                                    <GridPane prefHeight="285.0" prefWidth="667.0" BorderPane.alignment="CENTER">
+                                      <columnConstraints>
+                                        <ColumnConstraints halignment="RIGHT" hgrow="NEVER" maxWidth="129.0" minWidth="10.0" prefWidth="115.0" />
+                                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="403.0" minWidth="10.0" prefWidth="377.0" />
+                                          <ColumnConstraints hgrow="SOMETIMES" maxWidth="276.0" minWidth="10.0" prefWidth="175.0" />
+                                      </columnConstraints>
+                                      <rowConstraints>
+                                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                      </rowConstraints>
+                                       <children>
+                                          <Label text="Nom : ">
+                                             <GridPane.margin>
+                                                <Insets left="5.0" />
+                                             </GridPane.margin>
+                                          </Label>
+                                          <Label text="Couleur : " GridPane.rowIndex="1">
+                                             <GridPane.margin>
+                                                <Insets left="5.0" />
+                                             </GridPane.margin>
+                                          </Label>
+                                          <Label text="Saveur tabac : " GridPane.rowIndex="2">
+                                             <GridPane.margin>
+                                                <Insets left="5.0" />
+                                             </GridPane.margin>
+                                          </Label>
+                                          <TextField fx:id="nomAromeTF" GridPane.columnIndex="1">
+                                             <GridPane.margin>
+                                                <Insets right="60.0" />
+                                             </GridPane.margin>
+                                          </TextField>
+                                          <ColorPicker fx:id="colorAromeCP" prefHeight="25.0" prefWidth="163.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                                          <CheckBox fx:id="flavorTabacCB" mnemonicParsing="false" text="Cocher si c'est un arome avec des saveurs de tabac" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                                       </children>
+                                    </GridPane>
+                                 </center>
+                                 <top>
+                                    <Label text="Détail de l'arome" BorderPane.alignment="CENTER">
+                                       <BorderPane.margin>
+                                          <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                                       </BorderPane.margin>
+                                    </Label>
+                                 </top>
+                                 <bottom>
+                                    <ImageView fx:id="poubelleImageArome" fitHeight="83.0" fitWidth="85.0" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER_RIGHT">
+                                       <BorderPane.margin>
+                                          <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                                       </BorderPane.margin>
+                                    </ImageView>
+                                 </bottom>
+                              </BorderPane>
+                           </items>
+                        </SplitPane>
+                     </center>
+                  </BorderPane>
+               </content></Tab>
+            <Tab text="Gestion des Additifs">
+               <content>
+                  <BorderPane prefHeight="200.0" prefWidth="200.0">
+                     <center>
+                        <SplitPane dividerPositions="0.25278396436525613" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+                           <items>
+                              <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
+                                 <children>
+                                    <Label text="Liste des additifs">
+                                       <font>
+                                          <Font name="System Bold" size="13.0" />
+                                       </font>
+                                       <VBox.margin>
+                                          <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                       </VBox.margin>
+                                    </Label>
+                                    <TextField fx:id="searchAdditifTF" promptText="Rechercher un additif..">
+                                       <VBox.margin>
+                                          <Insets bottom="5.0" left="5.0" right="5.0" />
+                                       </VBox.margin>
+                                    </TextField>
+                                    <ListView fx:id="lvAdditif" prefHeight="441.0" prefWidth="223.0">
+                                       <VBox.margin>
+                                          <Insets />
+                                       </VBox.margin>
+                                    </ListView>
+                                    <Button mnemonicParsing="false" onAction="#onClickAddAdditif" text="Ajouter un additif">
+                                       <VBox.margin>
+                                          <Insets bottom="7.0" left="7.0" right="7.0" top="7.0" />
+                                       </VBox.margin>
+                                    </Button>
+                                 </children>
+                              </VBox>
+                              <BorderPane fx:id="detailAdditif" prefHeight="200.0" prefWidth="200.0">
+                                 <bottom>
+                                    <ImageView fx:id="poubelleImageAdditif" fitHeight="83.0" fitWidth="85.0" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER_RIGHT">
+                                       <BorderPane.margin>
+                                          <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                                       </BorderPane.margin>
+                                    </ImageView>
+                                 </bottom>
+                                 <center>
+                                    <GridPane prefHeight="285.0" prefWidth="667.0" BorderPane.alignment="CENTER">
+                                       <children>
+                                          <Label text="Nom : ">
+                                             <GridPane.margin>
+                                                <Insets left="5.0" />
+                                             </GridPane.margin>
+                                          </Label>
+                                          <Label alignment="TOP_LEFT" text="Description : " GridPane.rowIndex="1" GridPane.valignment="TOP">
+                                             <GridPane.margin>
+                                                <Insets left="5.0" />
+                                             </GridPane.margin>
+                                          </Label>
+                                          <TextField fx:id="nomAdditifTF" GridPane.columnIndex="1">
+                                             <GridPane.margin>
+                                                <Insets right="60.0" />
+                                             </GridPane.margin>
+                                          </TextField>
+                                          <TextArea fx:id="descriptionAdditifTA" prefHeight="40.0" prefWidth="377.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                                       </children>
+                                       <columnConstraints>
+                                          <ColumnConstraints halignment="RIGHT" maxWidth="129.0" minWidth="10.0" prefWidth="115.0" />
+                                          <ColumnConstraints hgrow="SOMETIMES" maxWidth="403.0" minWidth="10.0" prefWidth="377.0" />
+                                          <ColumnConstraints hgrow="SOMETIMES" maxWidth="276.0" minWidth="10.0" prefWidth="175.0" />
+                                       </columnConstraints>
+                                       <rowConstraints>
+                                          <RowConstraints maxHeight="116.0" minHeight="10.0" prefHeight="108.0" vgrow="SOMETIMES" />
+                                          <RowConstraints maxHeight="80.0" minHeight="10.0" prefHeight="66.0" vgrow="SOMETIMES" />
+                                          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                       </rowConstraints>
+                                    </GridPane>
+                                 </center>
+                                 <top>
+                                    <Label text="Détail de l'additif" BorderPane.alignment="CENTER">
+                                       <BorderPane.margin>
+                                          <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                                       </BorderPane.margin>
+                                    </Label>
+                                 </top>
+                              </BorderPane>
+                           </items>
+                        </SplitPane>
+                     </center>
+                     <top>
+                        <Label fx:id="gestionAromeLabel1" text="Gestion des additifs" BorderPane.alignment="CENTER">
+                           <font>
+                              <Font name="System Bold" size="24.0" />
+                           </font>
+                           <BorderPane.margin>
+                              <Insets bottom="10.0" top="10.0" />
+                           </BorderPane.margin>
+                        </Label>
+                     </top>
+                  </BorderPane>
+               </content>
+            </Tab>
+        </tabs>
+      </TabPane>
+   </center>
+</BorderPane>
