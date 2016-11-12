@@ -67,11 +67,7 @@ public class FenetrePrincipaleFXMLController implements Initializable {
     private CatalogueAromeVM catalogueAromeVM;
     private CatalogueAdditifVM catalogueAdditifVM;
     private CatalogueRecetteVM catalogueRecetteVM;
-   
-    
-    
-    
-   
+
     
     
     @FXML
@@ -370,7 +366,7 @@ public class FenetrePrincipaleFXMLController implements Initializable {
         Stage stage = new Stage();
         
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/AddRecetteFXML.fxml"));
-        loader.setController(new AddRecetteFXMLController(catalogueRecetteVM, catalogueAromeVM, catalogueAdditifVM));
+        loader.setController(new AddRecetteFXMLController(catalogueRecetteVM, catalogueAromeVM, catalogueAdditifVM, false, null, 0));
         Scene scene = new Scene(loader.load());
         
         stage.setScene(scene);
@@ -383,6 +379,41 @@ public class FenetrePrincipaleFXMLController implements Initializable {
         
         if(sizeListRecetteTmp != catalogueRecetteVM.sizeListeRecette()){
             lvRecette.getSelectionModel().selectLast();
+        }
+        
+        catalogueAdditifVM.reinitializeAdditifListProperty();
+        catalogueAromeVM.reinitializeAromeListProperty();
+    }
+    
+    @FXML
+    private void onClickEditRecette()  throws IOException{
+        int sizeListRecetteTmp = catalogueRecetteVM.sizeListeRecette();
+        
+        catalogueAdditifVM.reinitializeAdditifListProperty();
+        catalogueAromeVM.reinitializeAromeListProperty();
+        
+        Stage stage = new Stage();
+        
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/AddRecetteFXML.fxml"));
+        
+        RecetteVM recetteAEditer = (RecetteVM) lvRecette.getSelectionModel().getSelectedItem();
+        int index = lvRecette.getSelectionModel().getSelectedIndex();
+        loader.setController(new AddRecetteFXMLController(catalogueRecetteVM, catalogueAromeVM, catalogueAdditifVM, true, recetteAEditer, index));
+        Scene scene = new Scene(loader.load());
+        
+        stage.setScene(scene);
+        stage.setTitle("Modifier une recette");
+        
+        Stage stage1 = (Stage)searchRecetteTF.getScene().getWindow();
+        stage.initModality(Modality.WINDOW_MODAL);
+        stage.initOwner(stage1);
+        stage.showAndWait();
+        
+        if(sizeListRecetteTmp != catalogueRecetteVM.sizeListeRecette()){
+            lvRecette.getSelectionModel().selectLast();
+        }
+        else{
+            lvRecette.getSelectionModel().select(index);
         }
         
         catalogueAdditifVM.reinitializeAdditifListProperty();
@@ -851,6 +882,9 @@ public class FenetrePrincipaleFXMLController implements Initializable {
     //===========================================================================
     //==============================GESTION GENERALE ===============================
     //===========================================================================
+    
+    
+    
     
     /**
      * Catch the event when a click is detected on saveButton 

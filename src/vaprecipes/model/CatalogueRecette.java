@@ -42,6 +42,12 @@ public class CatalogueRecette implements Serializable{
         listeRecette.add(r);
         
     }
+    
+    public void editRecette(Recette r, int index){
+
+        listeRecette.set(index, r);
+        
+    }
     public void addRecetteLoad(Recette r){
 
         listeRecette.add(r);

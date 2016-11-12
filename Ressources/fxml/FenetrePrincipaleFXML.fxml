@@ -85,7 +85,7 @@
                                                             <Insets right="50.0" />
                                                          </FlowPane.margin>
                                                       </Button>
-                                                      <Button mnemonicParsing="false" text="Modifier">
+                                                      <Button mnemonicParsing="false" onAction="#onClickEditRecette" text="Modifier">
                                                          <FlowPane.margin>
                                                             <Insets />
                                                          </FlowPane.margin>

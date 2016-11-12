@@ -19,6 +19,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
@@ -61,12 +62,18 @@ public class AddRecetteFXMLController implements Initializable{
     
     private String dragContent;
     
+    private boolean edition;
+    private int index;
+    
    
     @FXML
     TextField nomRecette, nicotinePG, nicotineVG;
     
     @FXML
-    Label qteTotaleRecette, proportionVG, proportionPG; 
+    Label qteTotaleRecette, proportionVG, proportionPG, titleAddRecette;
+    
+    @FXML
+    Button addButtonRecette;
     
     @FXML
     Slider proportionBaseSlider;
@@ -89,16 +96,58 @@ public class AddRecetteFXMLController implements Initializable{
     
             
     
-    public AddRecetteFXMLController(CatalogueRecetteVM catalogueRecetteVM, CatalogueAromeVM catalogueAromeVM, CatalogueAdditifVM catalogueAdditifVM) {
+    public AddRecetteFXMLController(CatalogueRecetteVM catalogueRecetteVM, CatalogueAromeVM catalogueAromeVM, CatalogueAdditifVM catalogueAdditifVM, 
+                                    boolean  edition, RecetteVM recetteOriginale, int index) {
         this.catalogueRecetteVM = catalogueRecetteVM;
         this.catalogueAromeVM = catalogueAromeVM;
         this.catalogueAdditifVM = catalogueAdditifVM;
+        this.edition = edition;
+        this.index = index;
+        
+        recetteVM = new RecetteVM("", 20, 50, 50, 0, 0);
+
+        if(edition){
+            intializeRecetteToEdit(recetteOriginale);
+        }
+        
+    }
+    
+    private void intializeRecetteToEdit(RecetteVM recetteOriginal){
+        this.recetteVM.setNom(recetteOriginal.getNom());
+        this.recetteVM.setQteTotale(recetteOriginal.getQteTotale());
+        this.recetteVM.setProportionPG(recetteOriginal.getProportionPG());
+        this.recetteVM.setTauxNicotinePG(recetteOriginal.getTauxNicotinePG());
+        this.recetteVM.setProportionVG(recetteOriginal.getProportionVG());
+        this.recetteVM.setTauxNicotineVG(recetteOriginal.getTauxNicotineVG());
+        this.recetteVM.setTauxNicotine(recetteOriginal.getTauxNicotine());
+        this.recetteVM.setPoucentageBase(recetteOriginal.getPoucentageBase());
+        this.recetteVM.setPourcentageArome(recetteOriginal.getPourcentageArome());
+        this.recetteVM.setPourcentageAdditif(recetteOriginal.getPourcentageAdditif());
+        for (Object a : recetteOriginal.getListeAromeRecette()){
+             String couleur = String.format("#%02X%02X%02X",
+                                       (int)( ((AromeVM)a).getCouleur().getRed() * 255),
+                                       (int)( ((AromeVM)a).getCouleur().getGreen() * 255),
+                                       (int)( ((AromeVM)a).getCouleur().getBlue() * 255));
+             
+            recetteVM.addArome(new AromeVM(((AromeVM)a).getNom(), couleur, ((AromeVM)a).isFlavorTabac()), ((AromeRecetteVM)a).getQuantite());
+        }
+        
+        for (Object a : recetteOriginal.getListeAdditifRecette()){
+             
+            recetteVM.addAdditif(new AdditifVM(((AdditifVM)a).getNom(), ((AdditifVM)a).getDescription()), ((AdditifRecetteVM)a).getQuantite());
+        }
+        
+       
+        
     }
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         
-        recetteVM = new RecetteVM("", 20, 50, 50, 0, 0);
+        if(edition){
+             titleAddRecette.setText("Modification");
+            addButtonRecette.setText("Modifier");
+        }
         poubelleImageRecette.setImage(new Image("/image/poubelleClose.png"));
         fioleImage.setImage(new Image("/image/fioleOff.png"));
         
@@ -117,6 +166,8 @@ public class AddRecetteFXMLController implements Initializable{
         qteTotaleRecette.textProperty().bind(recetteVM.qteTotaleProperty().asString());
         proportionPG.textProperty().bindBidirectional(recetteVM.proportionPGProperty(), new NumberStringConverter());
         proportionVG.textProperty().bindBidirectional(recetteVM.proportionVGProperty(), new NumberStringConverter());
+        
+        proportionBaseSlider.valueProperty().bindBidirectional(recetteVM.proportionPGProperty());
         
         proportionPG.textProperty().bindBidirectional(proportionBaseSlider.valueProperty(), new StringConverter() {
             @Override
@@ -610,8 +661,17 @@ public class AddRecetteFXMLController implements Initializable{
     
     @FXML
     private void onClickAddRecette(){
+        
+        
         recetteVM.updateTauxNicotine();
-        catalogueRecetteVM.addRecette(recetteVM);
+        if(edition){
+           
+            catalogueRecetteVM.editRecette(recetteVM, index);
+            
+        }
+        else{
+            catalogueRecetteVM.addRecette(recetteVM);
+        }
         Stage stage = (Stage)nomRecette.getScene().getWindow();
         stage.close();
     }

@@ -53,6 +53,11 @@ public class CatalogueRecetteVM implements PropertyChangeListener{
         catalogueRecetteModel.addRecette(r.getRecette());
     }
     
+    public void editRecette(RecetteVM r, int index){
+        listeRecetteVMobs.set(index, r);
+        catalogueRecetteModel.editRecette(r.getRecette(), index);
+    }
+    
     public void removeRecette(int index){
         catalogueRecetteModel.removeRecette(index);
     }
