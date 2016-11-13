@@ -149,7 +149,7 @@ public class AddRecetteFXMLController implements Initializable{
             addButtonRecette.setText("Modifier");
         }
         poubelleImageRecette.setImage(new Image("/image/poubelleClose.png"));
-        fioleImage.setImage(new Image("/image/fioleOff.png"));
+        initializeFioleOff(recetteVM.getSizeListAromeAdditif());
         
         initializeDataBinding();
         initializeBindingLvArome();
@@ -381,6 +381,8 @@ public class AddRecetteFXMLController implements Initializable{
     
     private void removeArome(int index){
         recetteVM.removeArome(index);
+        initializeFioleOff(recetteVM.getSizeListAromeAdditif());
+
     }
     private void addArome(int index){
         double quantite = askQuantiteDialogArome(false);
@@ -392,11 +394,16 @@ public class AddRecetteFXMLController implements Initializable{
             erreurQteDialog();
         }
         
+        initializeFioleOff(recetteVM.getSizeListAromeAdditif());
+
+        
         
     }
     
     private void removeAdditif(int index){
         recetteVM.removeAdditif(index);
+        initializeFioleOff(recetteVM.getSizeListAromeAdditif());
+
     }
     private void addAdditif(int index){
         double quantite = askQuantiteDialogAdditif(false);
@@ -407,7 +414,8 @@ public class AddRecetteFXMLController implements Initializable{
         else if(quantite == -1){
             erreurQteDialog();
         }
-        
+        initializeFioleOff(recetteVM.getSizeListAromeAdditif());
+
     }
     
     
@@ -573,7 +581,7 @@ public class AddRecetteFXMLController implements Initializable{
             fioleImage.setOnDragEntered(event -> {
                 if(event.getGestureSource() != fioleImage && event.getDragboard().hasString()){
                     if(dragContent.equals("Additif") || dragContent.equals("Arome")){
-                        fioleImage.setImage(new Image("/image/fioleOn.png"));
+                         initializeFioleOn(recetteVM.getSizeListAromeAdditif());
                     }
                 }
      
@@ -585,7 +593,8 @@ public class AddRecetteFXMLController implements Initializable{
             fioleImage.setOnDragExited(event -> {
                 if(dragContent.equals("Additif") || dragContent.equals("Arome")){
                     
-                    fioleImage.setImage(new Image("/image/fioleOff.png"));
+                    initializeFioleOff(recetteVM.getSizeListAromeAdditif());
+
                 }
             });
             
@@ -763,5 +772,58 @@ public class AddRecetteFXMLController implements Initializable{
   
 
         alert.showAndWait();
+    }
+    
+    private void initializeFioleOff(int nbIngredient){
+        System.out.println(nbIngredient);
+        switch(nbIngredient){
+            case 0:
+                 fioleImage.setImage(new Image("/image/fioleOff.gif"));
+            break;
+            case 1:
+                 fioleImage.setImage(new Image("/image/fioleOff1.gif"));
+            break;
+            case 2:
+                 fioleImage.setImage(new Image("/image/fioleOff2.gif"));
+            break;
+            case 3:
+                 fioleImage.setImage(new Image("/image/fioleOff3.gif"));
+            break;
+            case 4:
+                 fioleImage.setImage(new Image("/image/fioleOff4.gif"));
+            break;
+            default:
+                 fioleImage.setImage(new Image("/image/fioleOff5.gif"));
+            break;
+            
+        } 
+    }
+    
+    private void initializeFioleOn(int nbIngredient){
+        System.out.println(nbIngredient);
+        switch(nbIngredient){
+            case 0:
+                 fioleImage.setImage(new Image("/image/fioleOn.gif"));
+            break;
+            case 1:
+                 fioleImage.setImage(new Image("/image/fioleOn1.gif"));
+            break;
+            case 2:
+                 fioleImage.setImage(new Image("/image/fioleOn2.gif"));
+            break;
+            case 3:
+                 fioleImage.setImage(new Image("/image/fioleOn3.gif"));
+            break;
+            case 4:
+                 fioleImage.setImage(new Image("/image/fioleOn4.gif"));
+            break;
+            default:
+                 fioleImage.setImage(new Image("/image/fioleOn5.gif"));
+            break;
+            
+                
+        }
+        
+        
     }
 }

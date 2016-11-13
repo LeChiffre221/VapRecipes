@@ -171,6 +171,10 @@ public class RecetteVM implements PropertyChangeListener{
     public double getSommeQteAromeQteAdditif(){
         return recetteModel.getSommeQteAromeQteAdditif();
     }
+    
+    public int getSizeListAromeAdditif(){
+        return listeAromeRecetteObs.size()+listeAdditifRecetteObs.size();
+    }
 
     
     

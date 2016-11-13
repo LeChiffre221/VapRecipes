@@ -80,7 +80,7 @@
                                              <bottom>
                                                 <FlowPane alignment="CENTER" prefHeight="35.0" prefWidth="364.0" BorderPane.alignment="CENTER">
                                                    <children>
-                                                      <Button mnemonicParsing="false" text="Incuber ">
+                                                      <Button mnemonicParsing="false" text="Incubateur">
                                                          <FlowPane.margin>
                                                             <Insets right="50.0" />
                                                          </FlowPane.margin>
